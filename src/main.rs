@@ -30,7 +30,6 @@ use rusthacl::*;
 
 use rand::Rng;
 use rand::os::OsRng;
-use std::error::Error;
 use std::io::prelude::*;
 use std::fs::File;
 use std::path::Path;
@@ -87,7 +86,7 @@ fn main() {
 
         // Open a file in write-only mode, returns `io::Result<File>`
         let mut file = match File::create(&path) {
-            Err(why) => panic!("couldn't create {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't create {}: {}", display, why.to_string()),
             Ok(file) => file,
         };
 
@@ -100,19 +99,19 @@ fn main() {
 
         // Write to the file
         match file.write_all(HEAD.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
 
         // write the keys
         match file.write_all(keys.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
 
         // Write to the file
         match file.write_all(TAIL.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
     }
@@ -126,7 +125,7 @@ fn main() {
 
         // Open a file in write-only mode, returns `io::Result<File>`
         let mut file = match File::create(&path) {
-            Err(why) => panic!("couldn't create {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't create {}: {}", display, why.to_string()),
             Ok(file) => file,
         };
 
@@ -138,19 +137,19 @@ fn main() {
 
         // Write to the file
         match file.write_all(HEAD.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
 
         // write the keys
         match file.write_all(keys.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
 
         // Write to the file
         match file.write_all(TAIL.as_bytes()) {
-            Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't write to {}: {}", display, why.to_string()),
             Ok(_) => (),
         }
     }
